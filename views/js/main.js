@@ -483,8 +483,9 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+//将dom的操作放在循环之外
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -517,11 +518,11 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
-  var cachedScrollTop=document.body.scrollTop; //将layout放在前面
+  var Top=document.body.scrollTop/1250; //将layout放在前面，并且将简单的计算也放在外面，可以去掉一个括号
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((cachedScrollTop / 1250) + (i % 5));
+    var phase = Math.sin(Top + i % 5);
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-  } 
+  }
   //每次改变样式的时候，刚刚执行的布局流程都会变得无效
   //错误提示：likely performance bottleneck，也叫做forced synchronous layout（FSL）
   //在这里是布局抖动
@@ -544,8 +545,10 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
-    var elem = document.createElement('img');
+  //这里i的最大值需要设置在24一下
+  //todu：需要通过屏幕高度来计算i的最大值
+  for (var i = 0; i < 24; i++) {
+    elem = document.createElement('img'); //删除var标识符，防止多次声明
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
