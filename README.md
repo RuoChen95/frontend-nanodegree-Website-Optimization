@@ -6,7 +6,7 @@
 - 要求内容：将i的最大值调到24以下
 - 在第551行删除var，防止多次声明
 ###个人介绍页面
-- 第80行，将js文件本地化，具体文件从这里[https://github.com/eladkarako/reversed-engineered-google-analytics-js/blob/master/analytics.js]下
+- 第80行，将js文件本地化，具体文件从[这里](https://github.com/eladkarako/reversed-engineered-google-analytics-js/blob/master/analytics.js)下
 ##如何打开文件:
 - 将views/pizza.html用浏览器打开；
 - 将index.html用浏览器打开
