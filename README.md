@@ -1,5 +1,11 @@
 # frontend-nanodegree-Website-Optimization
 
+## update:经过第二次审阅后的修改（pizza页面）
+
+- 427th，querySelector-->getelementById,后者速度[更快](https://jsperf.com/getelementbyid-vs-queryselector-vs-queryselector-by-id)
+- 523rd，定义放在循环外
+- 548~550，根据页面宽度动态设置pizza的数量
+
 ## update:经过第一次审阅后我是如何修改的
 
 ### pizza页面
