@@ -424,7 +424,8 @@ var resizePizzas = function(size) {
    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
     var oldWidth = elem.offsetWidth;
-    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
+  //querySelector-->getelementById,后者速度[更快]
+    var windowWidth = document.getElementById("#randomPizzas").offsetWidth;
     var oldSize = oldWidth / windowWidth;
 
     // Changes the slider value to a percent width
@@ -519,8 +520,9 @@ function updatePositions() {
 
   var items = document.querySelectorAll('.mover');
   var Top=document.body.scrollTop/1250; //将layout放在前面，并且将简单的计算也放在外面，可以去掉一个括号
+  var phase;//phase的定义放在循环外
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin(Top + i % 5);
+    phase = Math.sin(Top + i % 5);
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
   //每次改变样式的时候，刚刚执行的布局流程都会变得无效
@@ -543,11 +545,12 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = 8;
+  var cols = Math.floor(window.screen.width/200); //根据页面宽度设置pizza的数量
   var s = 256;
-  //这里i的最大值需要设置在24一下
+  var imax = s/cols;
+  //这里i的最大值需要设置在24以下
   //todu：需要通过屏幕高度来计算i的最大值
-  for (var i = 0; i < 24; i++) {
+  for (var i = 0; i < imax; i++) {
     elem = document.createElement('img'); //删除var标识符，防止多次声明
     elem.className = 'mover';
     elem.src = "images/pizza.png";
