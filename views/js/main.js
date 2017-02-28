@@ -545,12 +545,11 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = Math.floor(window.screen.width/200); //根据页面宽度设置pizza的数量
+  var cols = 8
   var s = 256;
-  var imax = s/cols;
-  //这里i的最大值需要设置在24以下
-  //todu：需要通过屏幕高度来计算i的最大值
-  for (var i = 0; i < imax; i++) {
+  var rows = window.screen.width / s;
+  var numberOfPizzas = cols * rows;
+  for (var i = 0; i < numberOfPizzas; i++) {
     elem = document.createElement('img'); //删除var标识符，防止多次声明
     elem.className = 'mover';
     elem.src = "images/pizza.png";
