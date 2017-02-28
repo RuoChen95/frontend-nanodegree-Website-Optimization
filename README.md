@@ -5,10 +5,10 @@
 - 将index.html用浏览器打开
 
 ## 优化index.html
- - 去除外联css，减少搜索文件的时间
- - 将所有的js代码加上async属性
- - 图片本地化
- - 第124行，将js文件本地化，具体文件从[这里](https://github.com/eladkarako/reversed-engineered-google-analytics-js/blob/master/analytics.js)下
+- 去除外联css，减少搜索文件的时间
+- 将所有的js代码加上async属性
+- 图片本地化
+- 第124行，将js文件本地化，具体文件从[这里](https://github.com/eladkarako/reversed-engineered-google-analytics-js/blob/master/analytics.js)下
 - 将所有js内容放在最后的body之前
 - 在[这里](http://optimizilla.com/zh/)优化了图片
  
